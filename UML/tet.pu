@@ -1,0 +1,36 @@
+@startuml
+entity Entity
+class Controller
+note right of Controller : 入力値をUseCaseに渡す
+
+interface UseCase
+class Interctor {
+  Repository
+  Presenter
+}
+note right of Interctor : ビジネスロジックはコンポジションで実施
+
+interface Repository {
+    CreateData()
+    UpdateData()
+    DeleteData()
+}
+note right of Repository : データの永続化（Daoに近い処理の実施）
+
+class RepositoryImpl
+
+interface Presenter {
+    SetEntity()
+}
+note right of Presenter : データの加工（Entityへの値設定）
+
+class PresenterImpl
+
+Entity <- Controller
+Controller --* UseCase
+UseCase <|-- Interctor
+Interctor --* Repository
+Repository <|-- RepositoryImpl
+Interctor --* Presenter
+Presenter <|-- PresenterImpl
+@enduml

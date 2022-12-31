@@ -1,0 +1,41 @@
+@startuml
+entity Entity
+note left of Entity : JSONパラメータ用
+
+class Interctor {
+  repo Repository
+  pre Presenter
+}
+note right of Interctor {
+    ①PresenterでJSONパラメータの設定
+    ②設定したJSONパラメータ（Entity）を用いてSetJson関数を実行
+}
+
+interface Repository {
+    SetJson(Entity)
+}
+note left of Repository::SetJson
+    引数を追加
+end note
+
+class RepositoryImpl {
+    SetJson(Entity)
+}
+
+interface Presenter {
+    SetEntity(Entity)
+}
+note left of Presenter::SetEntity {
+    JSONパラメータの設定
+}
+
+class PresenterImpl {
+    SetEntity(Entity)
+}
+
+Entity <- Interctor
+Interctor --* Repository
+Repository <|-- RepositoryImpl
+Interctor --* Presenter
+Presenter <|-- PresenterImpl
+@enduml

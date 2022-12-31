@@ -1,0 +1,31 @@
+@startuml
+class Interctor {
+  repo Repository
+}
+
+interface Repository {
+    SetJson()
+}
+note right of Repository {
+    ①implを一つにまとめたい
+    ②①の実現として、ハードコーディングしているsetJson関数は引数で対応したい
+}
+
+class RepositoryImpl1 {
+    SetJson()
+}
+note left of RepositoryImpl1::setJson
+    パラメータ等をハードコーディング
+end note
+
+class RepositoryImpl2 {
+    SetJson()
+}
+note right of RepositoryImpl2::setJson
+    パラメータ等をハードコーディング
+end note
+
+Interctor --* Repository
+Repository <|-- RepositoryImpl1
+Repository <|-- RepositoryImpl2
+@enduml
