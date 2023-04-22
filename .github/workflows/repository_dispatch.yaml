@@ -1,0 +1,12 @@
+name: repository dispatch test
+
+on:
+  repository_dispatch:
+    types: [on-demand-test]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "test1"
