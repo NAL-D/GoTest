@@ -1,0 +1,32 @@
+name: workflow dispatch test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build1:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
+    steps:
+      - id: step1
+        run: |
+          echo "test=test1" >> "$GITHUB_OUTPUT"
+
+  build2:
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step2.outputs.test }}
+    needs: build1
+    steps:
+      - id: step2
+        run: |
+          echo "test=${{needs.build1.outputs.output1}}" >> "$GITHUB_OUTPUT"
+
+  build3:
+    runs-on: ubuntu-latest
+    needs: build2
+    steps:
+      - run: |
+          echo "${{needs.build2.outputs.output1}}"
+  
