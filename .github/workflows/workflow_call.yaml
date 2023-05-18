@@ -1,0 +1,23 @@
+name: workflow call test
+
+on:
+  workflow_call:
+    inputs:
+      input1:
+        required: true
+        type: string
+    inputs:
+      input2:
+        required: true
+        type: string
+
+jobs:
+  build1:
+    runs-on: ubuntu-latest
+    steps:
+      - id: step1
+        run: |
+          echo "::add-mask::${{ github.event.inputs.input1 }}"
+          echo "${{ github.event.inputs.input1 }}"
+          echo "${{ github.event.inputs.input2 }}"
+
