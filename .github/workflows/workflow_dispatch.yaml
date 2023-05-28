@@ -2,13 +2,19 @@ name: workflow dispatch test
 
 on:
   workflow_dispatch:
+    inputs:
+      test:
+        description: 'test'
+        required: true
+        default: 'warning'
+        type: string
 
 jobs:
   build1:
     uses: ./.github/workflows/workflow_call.yaml
     with:
-      input1: "aaa"
-      input2: "bbb"
+      input1: "ccc"
+      input2: ${{ inputs.test }}
     # runs-on: ubuntu-latest
     # # outputs:
     # #   output1: ${{ steps.step1.outputs.test }}
