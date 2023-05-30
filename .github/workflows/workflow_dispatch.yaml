@@ -29,10 +29,10 @@ jobs:
   #       run: |
   #         echo "test=${{needs.build1.outputs.output1}}" >> "$GITHUB_OUTPUT"
 
-  # build3:
-  #   runs-on: ubuntu-latest
-  #   needs: build2
-  #   steps:
-  #     - run: |
-  #         echo "${{needs.build2.outputs.output1}}"
+  build3:
+    runs-on: ubuntu-latest
+    needs: build1
+    steps:
+      - run: |
+          echo "qq1"
   
