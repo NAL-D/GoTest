@@ -22,4 +22,5 @@ jobs:
           echo "${{ github.event.inputs.input2 }}"
           echo "${{ inputs.input1 }}"
           echo "${{ inputs.input2 }}"
+          echo "${{ secrets.NORMAL }}"
 
