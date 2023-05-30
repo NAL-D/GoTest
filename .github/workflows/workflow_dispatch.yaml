@@ -8,7 +8,7 @@ jobs:
     uses: ./.github/workflows/workflow_call.yaml
     with:
       input1: "aaa"
-      input2: "bbb"
+      input2: "ccc"
     # runs-on: ubuntu-latest
     # # outputs:
     # #   output1: ${{ steps.step1.outputs.test }}
