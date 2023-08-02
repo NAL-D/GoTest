@@ -9,7 +9,7 @@ jobs:
     environment: test1
     steps:
       - run: |
-          echo "${{ vars.a1 }}""
+          echo "${{ vars.a1 }}"
 
   build2:
     runs-on: ubuntu-latest
