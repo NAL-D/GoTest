@@ -5,11 +5,23 @@ on:
 
 jobs:
   build1:
-    uses: ./.github/workflows/workflow_call.yaml
-    with:
-      input1: "aaa"
-      input2: "ccc"
-    secrets: inherit
+    runs-on: ubuntu-latest
+    environment: test1
+    steps:
+      - run: |
+          echo "${{ secrets.test }}"
+
+  build2:
+    runs-on: ubuntu-latest
+    environment: test2
+    steps:
+      - run: |
+          echo "${{ secrets.test }}"
+    # uses: ./.github/workflows/workflow_call.yaml
+    # with:
+    #   input1: "aaa"
+    #   input2: "ccc"
+    # secrets: inherit
     # runs-on: ubuntu-latest
     # # outputs:
     # #   output1: ${{ steps.step1.outputs.test }}
